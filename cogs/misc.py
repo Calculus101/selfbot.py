@@ -606,7 +606,7 @@ class Misc:
         if len('```' + message + '```') > 2000:
             await ctx.send('Your ASCII is too long!')
             return
-        await ctx.send( #!forage )
+        await ctx.send('```' + message + '```')
 
     @commands.command()
     async def whoisplaying(self, ctx, *, game):
