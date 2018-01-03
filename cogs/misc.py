@@ -599,15 +599,7 @@ class Misc:
         emb.add_field(name='\N{BILLIARDS} Your answer:', value=random.choice(choices), inline=True)
         await ctx.send(embed=emb)
     
-    @commands.command()
-    async def forage(self, ctx, *, text):
-        async with ctx.session.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}") as f:
-            message = await f.text()
-        if len('​`​`​`' + message + '​`​`​`') > 2000:
-            await ctx.send('Your ASCII is too long!')
-            return
-        await ctx.send(#!forage)
-          
+    
     @commands.command()
     async def ascii(self, ctx, *, text):
         async with ctx.session.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}") as f:
@@ -690,9 +682,13 @@ class Misc:
             pass
 
     @commands.command()
-    async def spaceify(self, ctx, *, text):
-        await asyncio.sleep(0.1)
-        await ctx.message.edit(text.replace('', ' '))
+    async def forage(self, ctx, *, text):
+        async with ctx.session.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}") as f:
+            message = await f.text()
+        if len('```' + message + '```') > 2000:
+            await ctx.send('Your ASCII is too long!')
+            return
+        await ctx.send(#!forage)
 
 def setup(bot):
     bot.add_cog(Misc(bot))
