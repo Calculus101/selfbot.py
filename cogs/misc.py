@@ -680,12 +680,6 @@ class Misc:
         except discord.Forbidden:
             pass
 
-@commands.command(aliases=['farm', 'doit', 'yolo'])
-async def rpg(self, ctx, *, text):
-    while True:
-  await ctx.send("message goes here")
-  await asyncio.sleep(10) # number of seconds
-
     @commands.command()
     async def spaceify(self, ctx, *, text):
         await asyncio.sleep(0.1)
